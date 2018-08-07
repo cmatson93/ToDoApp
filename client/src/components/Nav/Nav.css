@@ -1,0 +1,14 @@
+.navbar {
+    margin: 0;
+    border-radius: 0;
+    background-color: #EF767A;
+}
+
+.nav-links {
+    float: right;
+    display: flex;
+}
+
+.nav-header {
+    float: left;
+}

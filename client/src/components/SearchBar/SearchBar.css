@@ -1,0 +1,17 @@
+.searchbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.col-search-location {
+    margin: 5px;
+}
+
+.col-search-btn {
+    margin: 5px;
+}
+
+.btn:hover {
+    color: black;
+}
