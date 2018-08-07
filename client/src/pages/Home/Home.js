@@ -5,6 +5,7 @@ import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { List, ListItem } from "../../components/List";
 import SearchBar from "../../components/SearchBar";
+import DeleteBtn from "../../components/DeleteBtn";
 
 
 class Home extends Component {
@@ -57,7 +58,7 @@ class Home extends Component {
         //       .catch(err => console.log(err));
 		// }
 		console.log("NAME>>>>>>>")
-		console.log(this.state.name);
+		console.log(this.state.location);
 		API.saveChurch({
 			location: this.state.location,
 			name: "Oakland"
@@ -74,7 +75,13 @@ class Home extends Component {
               console.log("STATE", this.state))
             )
             .catch(err => console.log(err));
-    }
+	}
+	
+	deleteChurch = id => {
+		API.deleteChurch(id)
+			.then(res => this.loadChurches())
+			.catch(err => console.log(err));
+	}
 
 	render() {
 		return (
@@ -107,7 +114,7 @@ class Home extends Component {
                         {church.name} , {church.location}
                       </strong>
                     </Link>
-                    {/* <DeleteBtn onClick={() => this.deleteChurch(church._id)} /> */}
+                 <DeleteBtn onClick={() => this.deleteChurch(church._id)} />
                   </ListItem>
                 ))}
               </List>
