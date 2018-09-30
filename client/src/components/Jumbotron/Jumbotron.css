@@ -1,0 +1,7 @@
+.jumbotron {
+    /* display: 'flex', flexDirection: 'row', justifyContent: 'center' */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

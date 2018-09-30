@@ -88,15 +88,13 @@ class Home extends Component {
 		return (
 			<div className="home">
 				<Jumbotron fluid className="jumbotron">
-					<Container fluid className="container">
-						<h1>TO DO</h1>
+						<h1 style={{}}>TO DO</h1>
 						<h3>Get things DONE!</h3>
-						<Link to={"/toDos"} style={{ textDecoration: 'none' }}>
+						{/*<Link to={"/toDos"} style={{ textDecoration: 'none' }}>
 							<button>
 								Go to your list 
 							</button>
-						</Link>
-					</Container>
+            </Link>*/}
 					<SearchBar 
 						className = "searchBar"
 						inputHandler = { this.handleInputChange }
