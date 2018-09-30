@@ -10,7 +10,7 @@ export default class SearchBar extends Component {
 	constructor(props) {
     super(props);
     this.state = {
-    	churches: []
+    	toDos: []
     };
   	// props.platformQuery()
 	// 		.then(res => this.setState({ platforms: res.data }))
@@ -25,8 +25,8 @@ export default class SearchBar extends Component {
                         className="location-seach-input"
                         placeholder='Search Location'
                         onChange={this.props.inputHandler}
-                        name='location'
-                        value={this.props.location}
+                        name='toDoName'
+                        value={this.props.toDoName}
                     />
                 </Col>
                 <Col className='col-search-btn'>

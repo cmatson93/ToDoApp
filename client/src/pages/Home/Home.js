@@ -7,19 +7,18 @@ import { List, ListItem } from "../../components/List";
 import SearchBar from "../../components/SearchBar";
 import DeleteBtn from "../../components/DeleteBtn";
 
-
 class Home extends Component {
 
 	state = {
-        churches: [],
-        name: "",
-        location: "",
+        toDos: [],
+        toDoName: "",
+        isDone: false,
         summary: "",
         query: this.props.match.params || {}
     }
 
     componentDidMount = () => {
-      this.loadChurches();
+      this.loadToDos();
     }
 
     checkState = () => {
@@ -34,10 +33,12 @@ class Home extends Component {
     }
 
     handleInputChange = event => {
-        console.log("-");
-        // Destructure the name and value properties off of event.target
-		// Update the appropriate state
-		console.log(event.target);
+      console.log("-");
+      // Destructure the name and value properties off of event.target
+		  // Update the appropriate state
+      console.log(event.target);
+      console.log(name);
+      console.log(value);
         const { name, value } = event.target;
         this.setState({
             [name]: value
@@ -58,28 +59,28 @@ class Home extends Component {
         //       .catch(err => console.log(err));
 		// }
 		console.log("NAME>>>>>>>")
-		console.log(this.state.location);
-		API.saveChurch({
-			location: this.state.location,
-			name: "Oakland"
+		console.log(this.state.toDoName);
+		API.saveToDo({
+      toDoName: this.state.toDoName,
+			isDone: this.state.isDone      
 		})
-		.then(res => this.loadChurches())
+		.then(res => this.loadToDos())
 		.catch(err => console.log(err));
     }
 
-    loadChurches = () => {
-      console.log("LOADING CHURCHES...");
-        API.getChurches()
+    loadToDos = () => {
+      console.log("LOADING ToDos...");
+        API.getToDos()
             .then(res =>
-                this.setState({ churches: res.data, name: "", location: "", summary: "" },
-              console.log("STATE", this.state))
+                this.setState({ toDos: res.data, toDoName: "", isDone: false, summary: "" }),
+              // console.log(res.data)
             )
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
 	}
 	
-	deleteChurch = id => {
-		API.deleteChurch(id)
-			.then(res => this.loadChurches())
+	deleteToDo = id => {
+		API.deleteToDo(id)
+			.then(res => this.loadToDos())
 			.catch(err => console.log(err));
 	}
 
@@ -90,7 +91,7 @@ class Home extends Component {
 					<Container fluid className="container">
 						<h1>TO DO</h1>
 						<h3>Get things DONE!</h3>
-						<Link to={"/churches"} style={{ textDecoration: 'none' }}>
+						<Link to={"/toDos"} style={{ textDecoration: 'none' }}>
 							<button>
 								Go to your list 
 							</button>
@@ -100,21 +101,21 @@ class Home extends Component {
 						className = "searchBar"
 						inputHandler = { this.handleInputChange }
 						buttonHandler = { this.handleFormSubmit }
-						value = { this.state.location }
-						name = { this.state.location }
-						name = 'location' 
+						value = { this.state.toDoName }
+						name = { this.state.toDoName }
+						name = 'toDoName' 
             		/>
 				</Jumbotron>
-				{this.state.churches.length ? (
+				{this.state.toDos.length ? (
               <List>
-                {this.state.churches.map(church => (
-                  <ListItem key={church._id}>
-                    <Link to={"/churches/" + church._id}>
+                {this.state.toDos.map(toDo => (
+                  <ListItem key={toDo._id}>
+                    <Link to={"/toDos/" + toDo._id}>
                       <strong>
-                        {church.name} , {church.location}
+                        {toDo.toDoName} 
                       </strong>
                     </Link>
-                 <DeleteBtn onClick={() => this.deleteChurch(church._id)} />
+                 <DeleteBtn onClick={() => this.deleteToDo(toDo._id)} />
                   </ListItem>
                 ))}
               </List>
@@ -122,7 +123,6 @@ class Home extends Component {
               <h3>No Results to Display</h3>
             )}
 			</div>
-				
 		)
 	}
 }

@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: 'Lato';
     color: white;
     font-weight: 300;
@@ -46,19 +46,19 @@ body {
     border-radius: 2px;
 } */
 
-button {
+/* button {
     outline: none;
     border: none;
     cursor: pointer;
     display: block;
     position: relative;
     background: #EF767A;
-    font-size: 15px;
+    font-size: 15px; */
     /* font-weight: 300; */
-    color: white;
+    /* color: white; */
     /* text-transform: uppercase; */
     /* letter-spacing: 2px; */
-    padding: 10px 30px;
+    /* padding: 10px 30px;
     margin: 0 auto;
     box-shadow: 0 6px #d76a6d;
     border-radius: 10px;
@@ -71,5 +71,5 @@ button:hover {
 
 button:active {
     box-shadow: 0 0 #d76a6d;
-    top: 6px;
-}
+    top: 6px; 
+} */

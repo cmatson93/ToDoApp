@@ -1,3 +1,3 @@
 module.exports = {
-  Church: require("./church")
+  ToDo: require("./toDo")
 };
